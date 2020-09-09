@@ -57,6 +57,10 @@
       <Project>{3BE23F5C-04CA-419F-8BE2-0B3B72E896C8}</Project>
       <Name>Assesment.Inventory.Common.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\CommonLayer\Assesment.Inventory.Common.Util\Assesment.Inventory.Common.Util.csproj">
+      <Project>{AB2534AA-7FCE-4725-944E-C88BBEE556E7}</Project>
+      <Name>Assesment.Inventory.Common.Util</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\DataLayer\Assesment.Inventory.Data.EntityManager\Assesment.Inventory.Data.EntityManager.csproj">
       <Project>{FA6C4E37-EE35-4912-97E4-A5D9E40DCE14}</Project>
       <Name>Assesment.Inventory.Data.EntityManager</Name>

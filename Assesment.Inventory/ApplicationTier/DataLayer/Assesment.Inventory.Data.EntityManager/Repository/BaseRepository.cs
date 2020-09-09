@@ -1,9 +1,11 @@
-﻿using Assesment.Inventory.Data.EntityManager.DatabaseContext;
+﻿using Assesment.Inventory.Common.Util.Helpers;
+using Assesment.Inventory.Data.EntityManager.DatabaseContext;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,17 +22,24 @@ namespace Assesment.Inventory.Data.EntityManager.Repository
 
         public void Delete<T>(Expression<Func<T, bool>> predicate) where T : class
         {
-            List<T> instance = inventoryDbContext.Set<T>().Where(predicate).ToList();
-
-            if (instance.Any())
+            try
             {
-                foreach (var item in instance)
+                List<T> instance = inventoryDbContext.Set<T>().Where(predicate).ToList();
+
+                if (instance.Any())
                 {
-                    if (item != null)
+                    foreach (var item in instance)
                     {
-                        inventoryDbContext.Set<T>().Remove(item);
+                        if (item != null)
+                        {
+                            inventoryDbContext.Set<T>().Remove(item);
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
             }
         }
 
@@ -42,7 +51,9 @@ namespace Assesment.Inventory.Data.EntityManager.Repository
             }
             catch (Exception ex)
             {
-                throw ex;
+                LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
+
+                return null;
             }
         }
 
@@ -54,7 +65,8 @@ namespace Assesment.Inventory.Data.EntityManager.Repository
             }
             catch (Exception ex)
             {
-                throw ex;
+                LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
+                return null;
             }
         }
 
@@ -67,7 +79,7 @@ namespace Assesment.Inventory.Data.EntityManager.Repository
             }
             catch (Exception ex)
             {
-                throw ex;
+                LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
             }
 
             return returnValue;
@@ -84,7 +96,9 @@ namespace Assesment.Inventory.Data.EntityManager.Repository
             }
             catch (Exception ex)
             {
-                throw ex;
+                LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
+
+                return null;
             }
         }
     }

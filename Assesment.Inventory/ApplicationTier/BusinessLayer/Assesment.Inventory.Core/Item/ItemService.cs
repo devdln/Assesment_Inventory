@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Assesment.Inventory.Common.Model.Enums;
 using AutoMapper;
 using Assesment.Inventory.Common.Model.ViewModel;
+using Assesment.Inventory.Common.Util.Helpers;
 
 namespace Assesment.Inventory.Core.Item
 {
@@ -24,7 +25,7 @@ namespace Assesment.Inventory.Core.Item
         }
 
         public ItemDTO Create(ItemDTO item)
-        {
+        {            
             ItemSchema.Item itemDb = this.MapDtoToDbEntity(item);
 
             itemDb.RecordStatusId = (int)RecordStatuses.Active;

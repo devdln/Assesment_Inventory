@@ -70,6 +70,10 @@
       <Project>{3BE23F5C-04CA-419F-8BE2-0B3B72E896C8}</Project>
       <Name>Assesment.Inventory.Common.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\CommonLayer\Assesment.Inventory.Common.Util\Assesment.Inventory.Common.Util.csproj">
+      <Project>{AB2534AA-7FCE-4725-944E-C88BBEE556E7}</Project>
+      <Name>Assesment.Inventory.Common.Util</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Assesment.Inventory.Data.Model\Assesment.Inventory.Data.Model.csproj">
       <Project>{58FC8C1B-EFE6-45E4-9556-1E12A78C3FC9}</Project>
       <Name>Assesment.Inventory.Data.Model</Name>
