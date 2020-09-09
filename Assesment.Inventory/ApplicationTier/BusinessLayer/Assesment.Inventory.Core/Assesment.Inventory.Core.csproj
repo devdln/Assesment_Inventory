@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>331546a5-59cb-44d7-92be-6b22976bf64d</ProjectGuid>
+    <ProjectGuid>{331546A5-59CB-44D7-92BE-6B22976BF64D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Assesment.Inventory.Core</RootNamespace>
@@ -31,24 +31,47 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.10.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="AutoMapperConf\AutoMapperConf.cs" />
+    <Compile Include="Item\ItemService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonLayer\Assesment.Inventory.Common.Ioc\Assesment.Inventory.Common.Ioc.csproj">
+      <Project>{12DEB2E0-7B19-4ED9-B79F-3F131136C991}</Project>
+      <Name>Assesment.Inventory.Common.Ioc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CommonLayer\Assesment.Inventory.Common.Model\Assesment.Inventory.Common.Model.csproj">
+      <Project>{3BE23F5C-04CA-419F-8BE2-0B3B72E896C8}</Project>
+      <Name>Assesment.Inventory.Common.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataLayer\Assesment.Inventory.Data.EntityManager\Assesment.Inventory.Data.EntityManager.csproj">
+      <Project>{FA6C4E37-EE35-4912-97E4-A5D9E40DCE14}</Project>
+      <Name>Assesment.Inventory.Data.EntityManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DataLayer\Assesment.Inventory.Data.Model\Assesment.Inventory.Data.Model.csproj">
+      <Project>{58fc8c1b-efe6-45e4-9556-1e12a78c3fc9}</Project>
+      <Name>Assesment.Inventory.Data.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Assesment.Inventory.Core.API\Assesment.Inventory.Core.API.csproj">
+      <Project>{AF12DE29-FF1B-4F55-B831-7DCAA21E9288}</Project>
+      <Name>Assesment.Inventory.Core.API</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>

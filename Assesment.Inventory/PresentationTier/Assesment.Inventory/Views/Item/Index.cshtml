@@ -1,0 +1,66 @@
+﻿@model Assesment.Inventory.Common.Model.ViewModel.ItemPaginationModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            UnitsAvaialble
+        </th>
+        <th>
+            ReOrderLevel
+        </th>
+        <th>
+            UnitPrice
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Items)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsAvaialble)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReOrderLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div class="row">
+
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+</div>
+
+<ul class="pagination">
+    @foreach (var page in Model.PageList)
+    {
+        <li>@Html.ActionLink(page.ToString(), "Index", new { page = page })</li>
+    }
+</ul>

@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assesment.Inventory.Data.EntityManager
+namespace Assesment.Inventory.Common.Model.Enums
 {
-    public class Class1
+    public enum RecordStatuses
     {
+        Active = 1,
+        Delete = 2
     }
 }
