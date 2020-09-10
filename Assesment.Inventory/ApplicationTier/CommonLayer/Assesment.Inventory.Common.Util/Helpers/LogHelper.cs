@@ -1,12 +1,11 @@
 ﻿using NLog;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assesment.Inventory.Common.Util.Helpers
 {
+    /// <summary>
+    /// LogHelper class
+    /// </summary>
     public static class LogHelper
     {
         /// <summary>
@@ -27,6 +26,7 @@ namespace Assesment.Inventory.Common.Util.Helpers
         public static void LogException(Exception ex, string message)
         {
             Logger logger = LogManager.GetLogger("ex");
+
             logger.Log(LogLevel.Fatal, message, ex);
 
             if (ex.InnerException != null)

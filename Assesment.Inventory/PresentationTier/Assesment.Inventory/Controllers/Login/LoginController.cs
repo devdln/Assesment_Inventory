@@ -7,8 +7,17 @@ using System.Web.Security;
 
 namespace Assesment.Inventory.Controllers.Login
 {
+    /// <summary>
+    /// LoginController class
+    /// </summary>
+    /// <seealso cref="System.Web.Mvc.Controller" />
     public class LoginController : Controller
     {
+        /// <summary>
+        /// Logins the specified return URL.
+        /// </summary>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <returns></returns>
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -21,6 +30,13 @@ namespace Assesment.Inventory.Controllers.Login
             return View();
         }
 
+        /// <summary>
+        /// Logins the specified username.
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <param name="password">The password.</param>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]

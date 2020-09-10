@@ -63,5 +63,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Assesment.Inventory.Common.Util\Assesment.Inventory.Common.Util.csproj">
+      <Project>{AB2534AA-7FCE-4725-944E-C88BBEE556E7}</Project>
+      <Name>Assesment.Inventory.Common.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

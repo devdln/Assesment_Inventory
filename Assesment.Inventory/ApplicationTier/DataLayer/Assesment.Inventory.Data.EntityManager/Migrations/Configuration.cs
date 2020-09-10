@@ -7,6 +7,8 @@
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using Assesment.Inventory.Common.Util.Helpers;
+    using System.Reflection;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Assesment.Inventory.Data.EntityManager.DatabaseContext.InventoryDbContext>
     {
@@ -22,7 +24,8 @@
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
             try
-            {                
+            {   
+                // check if data already exist before adding data when db initialization happens
                 ItemSchema.Item item = context.Items.Where(a => a.Id == 1).FirstOrDefault<ItemSchema.Item>();
                 if(item == null)
                 {
@@ -48,7 +51,9 @@
             }
             catch (Exception ex)
             {
-                //throw;
+                LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
+
+                throw ex;
             }
         }
     }

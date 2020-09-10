@@ -6,20 +6,33 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Assesment.Inventory.Data.EntityManager.Repository
 {
+    /// <summary>
+    /// BaseRepository class
+    /// </summary>
+    /// <seealso cref="Assesment.Inventory.Data.EntityManager.Repository.IRepository" />
     public class BaseRepository : IRepository
     {
+        /// <summary>
+        /// The inventory database context
+        /// </summary>
         private InventoryDbContext inventoryDbContext;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseRepository"/> class.
+        /// </summary>
         public BaseRepository()
         {
             this.inventoryDbContext = new InventoryDbContext();
         }
 
+        /// <summary>
+        /// Deletes the specified predicate.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="predicate">The predicate.</param>
         public void Delete<T>(Expression<Func<T, bool>> predicate) where T : class
         {
             try
@@ -40,9 +53,16 @@ namespace Assesment.Inventory.Data.EntityManager.Repository
             catch (Exception ex)
             {
                 LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
+
+                throw ex;
             }
         }
 
+        /// <summary>
+        /// Gets all query.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public IQueryable<T> GetIQueryable<T>() where T : class
         {            
             try
@@ -53,10 +73,18 @@ namespace Assesment.Inventory.Data.EntityManager.Repository
             {
                 LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
 
-                return null;
+                throw ex;
             }
         }
 
+        /// <summary>
+        /// Inserts the specified instance.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="instance">The instance.</param>
+        /// <returns>
+        /// Instance.
+        /// </returns>
         public T Insert<T>(T instance) where T : class
         {
             try
@@ -66,10 +94,15 @@ namespace Assesment.Inventory.Data.EntityManager.Repository
             catch (Exception ex)
             {
                 LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
-                return null;
+
+                throw ex;
             }
         }
 
+        /// <summary>
+        /// Saves the changes.
+        /// </summary>
+        /// <returns></returns>
         public int SaveChanges()
         {
             int returnValue = -1;
@@ -80,11 +113,21 @@ namespace Assesment.Inventory.Data.EntityManager.Repository
             catch (Exception ex)
             {
                 LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
+
+                throw ex;
             }
 
             return returnValue;
         }
 
+        /// <summary>
+        /// Updates the specified instance.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="instance">The instance.</param>
+        /// <returns>
+        /// Instance.
+        /// </returns>
         public T Update<T>(T instance) where T : class
         {
             try
@@ -98,7 +141,7 @@ namespace Assesment.Inventory.Data.EntityManager.Repository
             {
                 LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
 
-                return null;
+                throw ex;
             }
         }
     }
