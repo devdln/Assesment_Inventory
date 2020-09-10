@@ -25,17 +25,12 @@ namespace Assesment.Inventory.Core.Item
         /// </summary>
         IRepository repository;
 
-        private string LoggedInUserId;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ItemService"/> class.
         /// </summary>
         public ItemService()
         {
             this.repository = IocResolver.Resolve<IRepository>();
-
-            // get logged in user id
-            this.LoggedInUserId = HttpContext.Current.User.Identity.Name;
         }
 
         /// <summary>
@@ -52,7 +47,7 @@ namespace Assesment.Inventory.Core.Item
 
                 // set record status
                 itemDb.RecordStatusId = (int)RecordStatuses.Active;
-                itemDb.CreatedBy = this.LoggedInUserId;
+                itemDb.CreatedBy = item.LoggedUserId;
                 itemDb.CreatedDateTime = DateTime.Now;
 
                 itemDb = this.repository.Insert<ItemSchema.Item>(itemDb);
@@ -73,7 +68,7 @@ namespace Assesment.Inventory.Core.Item
         /// </summary>
         /// <param name="Id">The identifier.</param>
         /// <returns></returns>
-        public bool Delete(long Id)
+        public bool Delete(long Id, ItemDTO item)
         {
             bool isDeleteSuccess = false;
 
@@ -82,7 +77,7 @@ namespace Assesment.Inventory.Core.Item
                 ItemSchema.Item itemDb = this.repository.GetIQueryable<ItemSchema.Item>().Where<ItemSchema.Item>(a => a.Id == Id).FirstOrDefault<ItemSchema.Item>();
 
                 itemDb.RecordStatusId = (int)RecordStatuses.Delete; // set reocrds status as delete
-                itemDb.ModifiedBy = this.LoggedInUserId;
+                itemDb.ModifiedBy = item.LoggedUserId;
                 itemDb.ModifiedDateTime = DateTime.Now;
 
                 this.repository.SaveChanges(); // commit data to db
@@ -207,7 +202,7 @@ namespace Assesment.Inventory.Core.Item
                 itemDbFromDb.UnitPrice = itemWithChanges.UnitPrice;
                 // set record status
                 itemDbFromDb.RecordStatusId = (int)RecordStatuses.Active;
-                itemDbFromDb.ModifiedBy = this.LoggedInUserId;
+                itemDbFromDb.ModifiedBy = item.LoggedUserId;
                 itemDbFromDb.ModifiedDateTime = DateTime.Now;
 
                 itemDbFromDb = this.repository.Update<ItemSchema.Item>(itemDbFromDb);

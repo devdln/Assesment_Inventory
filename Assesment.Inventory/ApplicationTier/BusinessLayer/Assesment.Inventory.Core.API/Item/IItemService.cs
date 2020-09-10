@@ -28,7 +28,7 @@ namespace Assesment.Inventory.Core.API.Item
         /// </summary>
         /// <param name="Id">The identifier.</param>
         /// <returns></returns>
-        bool Delete(long Id);
+        bool Delete(long Id, ItemDTO item);
 
         /// <summary>
         /// Lists this instance.

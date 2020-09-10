@@ -2,11 +2,7 @@
 using Assesment.Inventory.Common.Model.Item;
 using Assesment.Inventory.Core.API.Item;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using PagedList;
 using Assesment.Inventory.Common.Model.ViewModel;
 using Assesment.Inventory.Common.Util.Helpers;
 using System.Reflection;
@@ -83,9 +79,12 @@ namespace Assesment.Inventory.Controllers.Item
             {
                 if(ModelState.IsValid)
                 {
+                    // set logged user id
+                    item.LoggedUserId = System.Web.HttpContext.Current.User.Identity.Name;
+
                     ItemDTO itemReturned = this.itemService.Create(item);
 
-                    if(itemReturned == null)
+                    if(itemReturned == null) // create is not successful
                     {
                         ModelState.AddModelError(string.Empty, ConstantErrors.ITEM_CREATE_ERROR);
 
@@ -136,9 +135,12 @@ namespace Assesment.Inventory.Controllers.Item
             {
                 if (ModelState.IsValid)
                 {
+                    // set logged user id
+                    item.LoggedUserId = System.Web.HttpContext.Current.User.Identity.Name;
+
                     ItemDTO itemReturned = this.itemService.Update(item);
 
-                    if (itemReturned == null)
+                    if (itemReturned == null) // update is no succesful
                     {
                         ModelState.AddModelError(string.Empty, ConstantErrors.ITEM_UPDATE_ERROR);
 
@@ -187,9 +189,12 @@ namespace Assesment.Inventory.Controllers.Item
         {
             try
             {
-                bool isDeleteSuccess = this.itemService.Delete(id);
+                // set logged user id
+                item.LoggedUserId = System.Web.HttpContext.Current.User.Identity.Name;
 
-                if (isDeleteSuccess)
+                bool isDeleteSuccess = this.itemService.Delete(id, item);
+
+                if (isDeleteSuccess) // delete is success
                 {
                     return RedirectToAction("Index");                    
                 }

@@ -75,5 +75,13 @@ namespace Assesment.Inventory.Common.Model.Item
         /// The record status identifier.
         /// </value>
         public int RecordStatusId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the logged user identifier.
+        /// </summary>
+        /// <value>
+        /// The logged user identifier.
+        /// </value>
+        public string LoggedUserId { get; set; }
     }
 }
