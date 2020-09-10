@@ -28,8 +28,7 @@ namespace Assesment.Inventory.Common.Ioc
             }
             catch (Exception ex)
             {
-                LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
-                throw ex;
+                LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);                
             }
         }
 

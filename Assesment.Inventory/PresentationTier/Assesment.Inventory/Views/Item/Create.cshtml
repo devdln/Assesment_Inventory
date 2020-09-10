@@ -5,15 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Item Create</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>ItemDTO</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -26,7 +24,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.UnitsAvaialble, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.UnitsAvaialble, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.UnitsAvaialble, new { htmlAttributes = new { @class = "form-control text-right" } })
                 @Html.ValidationMessageFor(model => model.UnitsAvaialble, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -34,7 +32,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ReOrderLevel, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ReOrderLevel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.ReOrderLevel, new { htmlAttributes = new { @class = "form-control text-right" } })
                 @Html.ValidationMessageFor(model => model.ReOrderLevel, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -42,7 +40,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control text-right" } })
                 @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
             </div>
         </div>

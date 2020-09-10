@@ -1,28 +1,29 @@
 ﻿@model Assesment.Inventory.Common.Model.ViewModel.ItemPaginationModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Item List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Item List</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
 <table class="table">
     <tr>
         <th>
             Name
         </th>
         <th>
-            UnitsAvaialble
+            Units Avaialble
         </th>
         <th>
-            ReOrderLevel
+            Re-Order Level
         </th>
         <th>
-            UnitPrice
+            Unit Price
         </th>
         <th></th>
     </tr>

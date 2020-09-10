@@ -139,6 +139,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Error\ErrorController.cs" />
     <Compile Include="Controllers\Item\ItemController.cs" />
     <Compile Include="Controllers\Login\LoginController.cs" />
     <Compile Include="Global.asax.cs">
@@ -186,6 +187,7 @@
     <Content Include="Views\Item\Edit.cshtml" />
     <Content Include="Views\Item\Delete.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -220,6 +222,10 @@
     <ProjectReference Include="..\..\ApplicationTier\CommonLayer\Assesment.Inventory.Common.Model\Assesment.Inventory.Common.Model.csproj">
       <Project>{3be23f5c-04ca-419f-8be2-0b3b72e896c8}</Project>
       <Name>Assesment.Inventory.Common.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ApplicationTier\CommonLayer\Assesment.Inventory.Common.Util\Assesment.Inventory.Common.Util.csproj">
+      <Project>{AB2534AA-7FCE-4725-944E-C88BBEE556E7}</Project>
+      <Name>Assesment.Inventory.Common.Util</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\ApplicationTier\DataLayer\Assesment.Inventory.Data.EntityManager\Assesment.Inventory.Data.EntityManager.csproj">
       <Project>{fa6c4e37-ee35-4912-97e4-a5d9e40dce14}</Project>

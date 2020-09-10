@@ -52,9 +52,7 @@ namespace Assesment.Inventory.Data.EntityManager.Repository
             }
             catch (Exception ex)
             {
-                LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
-
-                throw ex;
+                LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);                
             }
         }
 
@@ -73,7 +71,7 @@ namespace Assesment.Inventory.Data.EntityManager.Repository
             {
                 LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
 
-                throw ex;
+                return null;
             }
         }
 
@@ -89,14 +87,18 @@ namespace Assesment.Inventory.Data.EntityManager.Repository
         {
             try
             {
-                return this.inventoryDbContext.Set<T>().Add(instance);
+                instance = this.inventoryDbContext.Set<T>().Add(instance);
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
 
+                instance = null;
+
                 throw ex;
             }
+
+            return instance;
         }
 
         /// <summary>
@@ -133,16 +135,16 @@ namespace Assesment.Inventory.Data.EntityManager.Repository
             try
             {
                 this.inventoryDbContext.Set<T>().Attach(instance);
-                this.inventoryDbContext.Entry(instance).State = EntityState.Modified;
-
-                return instance;
+                this.inventoryDbContext.Entry(instance).State = EntityState.Modified;                
             }
             catch (Exception ex)
             {
                 LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
 
-                throw ex;
+                instance = null;
             }
+
+            return instance;
         }
     }
 }

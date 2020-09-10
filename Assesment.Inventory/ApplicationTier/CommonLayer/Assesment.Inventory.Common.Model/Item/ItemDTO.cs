@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,7 @@ namespace Assesment.Inventory.Common.Model.Item
         /// </value>
         [StringLength(150)]
         [Required(ErrorMessage = "Item name is required")]
+        [DisplayName("Item name")]
         public string Name { get; set; }
 
         /// <summary>
@@ -38,6 +40,7 @@ namespace Assesment.Inventory.Common.Model.Item
         /// </value>
         [Required(ErrorMessage = "No of units available is required")]
         [Range(0.01, 999999999.99, ErrorMessage = "No of units available must be positive")]
+        [DisplayName("Units Avaialble")]
         public decimal UnitsAvaialble { get; set; }
 
         /// <summary>
@@ -48,6 +51,7 @@ namespace Assesment.Inventory.Common.Model.Item
         /// </value>
         [Required(ErrorMessage = "Re-order level is required")]
         [Range(0.01, 999999999.99, ErrorMessage = "Re-order level must be positive")]
+        [DisplayName("Re-Order Level")]
         public decimal ReOrderLevel { get; set; }
 
         /// <summary>
@@ -58,6 +62,7 @@ namespace Assesment.Inventory.Common.Model.Item
         /// </value>
         [Required(ErrorMessage = "Unit price is required")]
         [Range(0.01, 999999999.99, ErrorMessage = "Unit price must be positive")]
+        [DisplayName("Unit Price")]
         public decimal UnitPrice { get; set; }
 
         /// <summary>

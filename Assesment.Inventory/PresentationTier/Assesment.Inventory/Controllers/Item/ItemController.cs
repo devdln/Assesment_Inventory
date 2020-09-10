@@ -8,6 +8,9 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using Assesment.Inventory.Common.Model.ViewModel;
+using Assesment.Inventory.Common.Util.Helpers;
+using System.Reflection;
+using Assesment.Inventory.Common.Util.Constants;
 
 namespace Assesment.Inventory.Controllers.Item
 {
@@ -78,20 +81,30 @@ namespace Assesment.Inventory.Controllers.Item
         {
             try
             {
-                // TODO: Add insert logic here
                 if(ModelState.IsValid)
                 {
                     ItemDTO itemReturned = this.itemService.Create(item);
+
+                    if(itemReturned == null)
+                    {
+                        ModelState.AddModelError(string.Empty, ConstantErrors.ITEM_CREATE_ERROR);
+
+                        return View("Create", item);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index");
+                    }
                 }
                 else
                 {
                     return View("Create", item);
-                }
-
-                return RedirectToAction("Index");
+                }                
             }
-            catch
+            catch (Exception ex)
             {
+                LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
+
                 return View();
             }
         }
@@ -121,21 +134,30 @@ namespace Assesment.Inventory.Controllers.Item
         {
             try
             {
-                // TODO: Add update logic here
-                // TODO: Add insert logic here
                 if (ModelState.IsValid)
                 {
                     ItemDTO itemReturned = this.itemService.Update(item);
+
+                    if (itemReturned == null)
+                    {
+                        ModelState.AddModelError(string.Empty, ConstantErrors.ITEM_UPDATE_ERROR);
+
+                        return View("Edit", item);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index");
+                    }
                 }
                 else
                 {
                     return View("Edit", item);
                 }
-
-                return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
+                LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
+
                 return View();
             }
         }
@@ -165,13 +187,23 @@ namespace Assesment.Inventory.Controllers.Item
         {
             try
             {
-                // TODO: Add delete logic here
                 bool isDeleteSuccess = this.itemService.Delete(id);
 
-                return RedirectToAction("Index");
+                if (isDeleteSuccess)
+                {
+                    return RedirectToAction("Index");                    
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, ConstantErrors.ITEM_UPDATE_ERROR);
+
+                    return View("Edit", item);
+                }
             }
-            catch
+            catch (Exception ex)
             {
+                LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
+
                 return View();
             }
         }

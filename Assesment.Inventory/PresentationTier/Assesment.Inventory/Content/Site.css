@@ -22,3 +22,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.error-template {
+    padding: 40px 15px;
+    text-align: center;
+}

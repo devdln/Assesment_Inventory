@@ -5,45 +5,36 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Item Details</h2>
 
-<div>
-    <h4>ItemDTO</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+<div class="form-horizontal">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+    <div class="form-group">
+        @Html.LabelFor(model => model.UnitsAvaialble, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UnitsAvaialble, new { htmlAttributes = new { @class = "form-control text-right", disabled = "disabled" } })
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitsAvaialble)
-        </dt>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ReOrderLevel, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ReOrderLevel, new { htmlAttributes = new { @class = "form-control text-right", disabled = "disabled" } })
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.UnitsAvaialble)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ReOrderLevel)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ReOrderLevel)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitPrice)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UnitPrice)
-        </dd>
-
-    </dl>
+    <div class="form-group">
+        @Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control text-right", disabled = "disabled" } })
+        </div>
+    </div>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

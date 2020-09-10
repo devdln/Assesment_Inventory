@@ -47,7 +47,7 @@ namespace Assesment.Inventory.Core.Item
                 // set record status
                 itemDb.RecordStatusId = (int)RecordStatuses.Active;
 
-                this.repository.Insert<ItemSchema.Item>(itemDb);
+                itemDb = this.repository.Insert<ItemSchema.Item>(itemDb);
                 this.repository.SaveChanges(); // call save changes to commit data to db
             }
             catch (Exception ex)
@@ -55,8 +55,6 @@ namespace Assesment.Inventory.Core.Item
                 item = null;
 
                 LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
-
-                throw ex;
             }
 
             return item;
@@ -84,8 +82,6 @@ namespace Assesment.Inventory.Core.Item
             catch (Exception ex)
             {
                 LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
-
-                throw ex;
             }
 
             return isDeleteSuccess;
@@ -108,9 +104,7 @@ namespace Assesment.Inventory.Core.Item
             }
             catch (Exception ex)
             {
-                LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
-
-                throw ex;
+                LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);                
             }
 
             return item;
@@ -134,9 +128,7 @@ namespace Assesment.Inventory.Core.Item
             }
             catch (Exception ex)
             {
-                LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
-
-                throw ex;
+                LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);                
             }
 
             return items;
@@ -204,8 +196,6 @@ namespace Assesment.Inventory.Core.Item
             catch (Exception ex)
             {
                 LogHelper.LogException(ex, MethodBase.GetCurrentMethod().Name);
-
-                throw ex;
             }
 
             return item;
