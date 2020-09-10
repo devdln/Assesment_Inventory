@@ -17,6 +17,10 @@
                         ReOrderLevel = c.Decimal(nullable: false, precision: 18, scale: 2),
                         UnitPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
                         RecordStatusId = c.Int(nullable: false),
+                        CreatedBy = c.String(nullable: false, maxLength: 150),
+                        CreatedDateTime = c.DateTime(nullable: false),
+                        ModifiedBy = c.String(maxLength: 150),
+                        ModifiedDateTime = c.DateTime(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("metadata.RecordStatus", t => t.RecordStatusId, cascadeDelete: true)

@@ -8,7 +8,7 @@ namespace Assesment.Inventory.Data.Model.Item
     /// Item class
     /// </summary>
     [Table("Items", Schema = "item")]
-    public class Item
+    public class Item : BaseClass
     {
         /// <summary>
         /// Gets or sets the identifier.

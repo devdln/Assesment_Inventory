@@ -42,9 +42,9 @@ namespace Assesment.Inventory.Controllers.Item
         /// <returns></returns>
         public ActionResult Index(int? page)
         {
-            ItemPaginationModel itemPagination = this.itemService.Pagination(page);
+            ItemPaginationModel itemPaginationData = this.itemService.Pagination(page);
 
-            return View(itemPagination);
+            return View(itemPaginationData);
         }
 
         // GET: Item/Details/5

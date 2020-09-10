@@ -39,6 +39,7 @@ namespace Assesment.Inventory.Common.Model.Item
         /// The units avaialble.
         /// </value>
         [Required(ErrorMessage = "No of units available is required")]
+        [RegularExpression(@"^\d+\.\d{0,2}$", ErrorMessage ="Value shouldn't have more than two decimal places")]
         [Range(0.01, 999999999.99, ErrorMessage = "No of units available must be positive")]
         [DisplayName("Units Avaialble")]
         public decimal UnitsAvaialble { get; set; }
@@ -50,6 +51,7 @@ namespace Assesment.Inventory.Common.Model.Item
         /// The re order level.
         /// </value>
         [Required(ErrorMessage = "Re-order level is required")]
+        [RegularExpression(@"^\d+\.\d{0,2}$", ErrorMessage = "Value shouldn't have more than two decimal places")]
         [Range(0.01, 999999999.99, ErrorMessage = "Re-order level must be positive")]
         [DisplayName("Re-Order Level")]
         public decimal ReOrderLevel { get; set; }
@@ -61,6 +63,7 @@ namespace Assesment.Inventory.Common.Model.Item
         /// The unit price.
         /// </value>
         [Required(ErrorMessage = "Unit price is required")]
+        [RegularExpression(@"^\d+\.\d{0,2}$", ErrorMessage = "Value shouldn't have more than two decimal places")]
         [Range(0.01, 999999999.99, ErrorMessage = "Unit price must be positive")]
         [DisplayName("Unit Price")]
         public decimal UnitPrice { get; set; }

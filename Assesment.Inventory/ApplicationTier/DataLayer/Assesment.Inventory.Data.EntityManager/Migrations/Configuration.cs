@@ -32,19 +32,19 @@
                     context.RecordStatus.AddOrUpdate<RecordStatus>(new RecordStatus { Id = (int)RecordStatuses.Active, Description = "Active" });
                     context.RecordStatus.AddOrUpdate<RecordStatus>(new RecordStatus { Id = (int)RecordStatuses.Delete, Description = "Delete" });
 
-                    context.Items.Add(new ItemSchema.Item { Id = 1, Name = "Red Rice", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, RecordStatusId = (int)RecordStatuses.Active });
-                    context.Items.Add(new ItemSchema.Item { Id = 2, Name = "Cauliflower", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, RecordStatusId = (int)RecordStatuses.Active });
-                    context.Items.Add(new ItemSchema.Item { Id = 3, Name = "Cabbage", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, RecordStatusId = (int)RecordStatuses.Active });
-                    context.Items.Add(new ItemSchema.Item { Id = 4, Name = "Chicken", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, RecordStatusId = (int)RecordStatuses.Active });
-                    context.Items.Add(new ItemSchema.Item { Id = 5, Name = "Beans", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, RecordStatusId = (int)RecordStatuses.Active });
-                    context.Items.Add(new ItemSchema.Item { Id = 6, Name = "Oranges", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, RecordStatusId = (int)RecordStatuses.Active });
+                    context.Items.Add(new ItemSchema.Item { Id = 1, Name = "Red Rice", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, CreatedBy = "Migrated", CreatedDateTime = DateTime.Now, RecordStatusId = (int)RecordStatuses.Active });
+                    context.Items.Add(new ItemSchema.Item { Id = 2, Name = "Cauliflower", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, CreatedBy = "Migrated", CreatedDateTime = DateTime.Now, RecordStatusId = (int)RecordStatuses.Active });
+                    context.Items.Add(new ItemSchema.Item { Id = 3, Name = "Cabbage", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, CreatedBy = "Migrated", CreatedDateTime = DateTime.Now, RecordStatusId = (int)RecordStatuses.Active });
+                    context.Items.Add(new ItemSchema.Item { Id = 4, Name = "Chicken", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, CreatedBy = "Migrated", CreatedDateTime = DateTime.Now, RecordStatusId = (int)RecordStatuses.Active });
+                    context.Items.Add(new ItemSchema.Item { Id = 5, Name = "Beans", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, CreatedBy = "Migrated", CreatedDateTime = DateTime.Now, RecordStatusId = (int)RecordStatuses.Active });
+                    context.Items.Add(new ItemSchema.Item { Id = 6, Name = "Oranges", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, CreatedBy = "Migrated", CreatedDateTime = DateTime.Now, RecordStatusId = (int)RecordStatuses.Active });
 
-                    context.Items.Add(new ItemSchema.Item { Id = 7, Name = "Dhal", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, RecordStatusId = (int)RecordStatuses.Active });
-                    context.Items.Add(new ItemSchema.Item { Id = 8, Name = "Grapes", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, RecordStatusId = (int)RecordStatuses.Active });
-                    context.Items.Add(new ItemSchema.Item { Id = 9, Name = "Potatoes", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, RecordStatusId = (int)RecordStatuses.Active });
-                    context.Items.Add(new ItemSchema.Item { Id = 10, Name = "Salad Leaves", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, RecordStatusId = (int)RecordStatuses.Active });
-                    context.Items.Add(new ItemSchema.Item { Id = 11, Name = "White Rice", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, RecordStatusId = (int)RecordStatuses.Active });
-                    context.Items.Add(new ItemSchema.Item { Id = 12, Name = "Flour", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, RecordStatusId = (int)RecordStatuses.Active });
+                    context.Items.Add(new ItemSchema.Item { Id = 7, Name = "Dhal", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, CreatedBy = "Migrated", CreatedDateTime = DateTime.Now, RecordStatusId = (int)RecordStatuses.Active });
+                    context.Items.Add(new ItemSchema.Item { Id = 8, Name = "Grapes", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, CreatedBy = "Migrated", CreatedDateTime = DateTime.Now, RecordStatusId = (int)RecordStatuses.Active });
+                    context.Items.Add(new ItemSchema.Item { Id = 9, Name = "Potatoes", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, CreatedBy = "Migrated", CreatedDateTime = DateTime.Now, RecordStatusId = (int)RecordStatuses.Active });
+                    context.Items.Add(new ItemSchema.Item { Id = 10, Name = "Salad Leaves", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, CreatedBy = "Migrated", CreatedDateTime = DateTime.Now, RecordStatusId = (int)RecordStatuses.Active });
+                    context.Items.Add(new ItemSchema.Item { Id = 11, Name = "White Rice", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, CreatedBy = "Migrated", CreatedDateTime = DateTime.Now, RecordStatusId = (int)RecordStatuses.Active });
+                    context.Items.Add(new ItemSchema.Item { Id = 12, Name = "Flour", ReOrderLevel = 10.0M, UnitPrice = 100.00M, UnitsAvaialble = 1.5M, CreatedBy = "Migrated", CreatedDateTime = DateTime.Now, RecordStatusId = (int)RecordStatuses.Active });
 
                     context.SaveChanges();
                 }                                

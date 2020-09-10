@@ -10,6 +10,7 @@ using Assesment.Inventory.Common.Model.Enums;
 using Assesment.Inventory.Common.Model.ViewModel;
 using Assesment.Inventory.Common.Util.Helpers;
 using System.Reflection;
+using System.Web;
 
 namespace Assesment.Inventory.Core.Item
 {
@@ -24,12 +25,17 @@ namespace Assesment.Inventory.Core.Item
         /// </summary>
         IRepository repository;
 
+        private string LoggedInUserId;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ItemService"/> class.
         /// </summary>
         public ItemService()
         {
             this.repository = IocResolver.Resolve<IRepository>();
+
+            // get logged in user id
+            this.LoggedInUserId = HttpContext.Current.User.Identity.Name;
         }
 
         /// <summary>
@@ -46,6 +52,8 @@ namespace Assesment.Inventory.Core.Item
 
                 // set record status
                 itemDb.RecordStatusId = (int)RecordStatuses.Active;
+                itemDb.CreatedBy = this.LoggedInUserId;
+                itemDb.CreatedDateTime = DateTime.Now;
 
                 itemDb = this.repository.Insert<ItemSchema.Item>(itemDb);
                 this.repository.SaveChanges(); // call save changes to commit data to db
@@ -74,6 +82,8 @@ namespace Assesment.Inventory.Core.Item
                 ItemSchema.Item itemDb = this.repository.GetIQueryable<ItemSchema.Item>().Where<ItemSchema.Item>(a => a.Id == Id).FirstOrDefault<ItemSchema.Item>();
 
                 itemDb.RecordStatusId = (int)RecordStatuses.Delete; // set reocrds status as delete
+                itemDb.ModifiedBy = this.LoggedInUserId;
+                itemDb.ModifiedDateTime = DateTime.Now;
 
                 this.repository.SaveChanges(); // commit data to db
 
@@ -184,12 +194,23 @@ namespace Assesment.Inventory.Core.Item
         {
             try
             {
-                ItemSchema.Item itemDb = this.MapDtoToDbEntity(item);
+                // data passed from UI
+                ItemSchema.Item itemWithChanges = this.MapDtoToDbEntity(item);
 
+                // data record from db
+                ItemSchema.Item itemDbFromDb = this.repository.GetIQueryable<ItemSchema.Item>().Where<ItemSchema.Item>(a => a.Id == itemWithChanges.Id).FirstOrDefault<ItemSchema.Item>();
+
+                // map changes recieved from UI to db item
+                itemDbFromDb.Name = itemWithChanges.Name;
+                itemDbFromDb.ReOrderLevel = itemWithChanges.ReOrderLevel;
+                itemDbFromDb.UnitsAvaialble = itemWithChanges.UnitsAvaialble;
+                itemDbFromDb.UnitPrice = itemWithChanges.UnitPrice;
                 // set record status
-                itemDb.RecordStatusId = (int)RecordStatuses.Active;
+                itemDbFromDb.RecordStatusId = (int)RecordStatuses.Active;
+                itemDbFromDb.ModifiedBy = this.LoggedInUserId;
+                itemDbFromDb.ModifiedDateTime = DateTime.Now;
 
-                itemDb = this.repository.Update<ItemSchema.Item>(itemDb);
+                itemDbFromDb = this.repository.Update<ItemSchema.Item>(itemDbFromDb);
 
                 this.repository.SaveChanges();
             }

@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BaseClass.cs" />
     <Compile Include="Item\Item.cs" />
     <Compile Include="Metadata\RecordStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
